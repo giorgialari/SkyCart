@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/authentication/auth.service';
 
@@ -8,10 +8,21 @@ import { AuthService } from 'src/app/authentication/auth.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {}
-  ngOnInit(): void {}
+  constructor(private authService: AuthService, private router: Router) { }
+  isLoggedin: boolean = false
+  ngOnInit(): void {
+    if (localStorage.getItem('token')) {
+      this.isLoggedin = true
+    } else {
+      this.isLoggedin = false
+    }
+  }
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login']);
+    this.isLoggedin = false
+    this.router.navigate(['/products']);
   }
 }

@@ -1,97 +1,27 @@
-<!-- Carousel wrapper -->
-<div
-  id="carouselVideoExample"
-  class="carousel slide carousel-fade"
-  data-mdb-ride="carousel"
->
-  <!-- Indicators -->
-  <!-- <div class="carousel-indicators">
-    <button
-      type="button"
-      data-mdb-target="#carouselVideoExample"
-      data-mdb-slide-to="0"
-      class="active"
-      aria-current="true"
-      aria-label="Slide 1"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselVideoExample"
-      data-mdb-slide-to="1"
-      aria-label="Slide 2"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselVideoExample"
-      data-mdb-slide-to="2"
-      aria-label="Slide 3"
-    ></button>
-  </div> -->
-
-  <!-- Inner -->
+<div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
   <div class="carousel-inner">
-    <!-- Single item -->
     <div class="carousel-item active">
-      <video class="img-fluid" autoplay loop muted>
-        <source src="assets/video/video_1.mp4" type="video/mp4" />
-      </video>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>
-          Nulla vitae elit libero, a pharetra augue mollis interdum.
-        </p>
+      <div class="d-flex justify-content-center align-items-center">
+      <img src="assets/images/carousel/drone_1.jpg" class="d-block w-100" alt="Wild Landscape"/>
+    </div>
+    </div>
+    <div class="carousel-item">
+      <div class="d-flex justify-content-center align-items-center">
+      <img src="assets/images/carousel/drone_2.jpg" class="d-block w-100" alt="Camera"/>
       </div>
     </div>
-
-    <!-- Single item -->
     <div class="carousel-item">
-      <video class="img-fluid" autoplay loop muted>
-        <source src="assets/video/video_3.mp4" type="video/mp4" />
-      </video>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-      </div>
-    </div>
-
-    <!-- Single item -->
-    <div class="carousel-item">
-      <video class="img-fluid" autoplay loop muted>
-        <source
-          src="assets/video/video_2.mp4"
-          type="video/mp4"
-        />
-      </video>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-        </p>
+      <div class="d-flex justify-content-center align-items-center">
+      <img src="assets/images/carousel/drone_3.jpg" class="d-block w-100" alt="Exotic Fruits"/>
       </div>
     </div>
   </div>
-  <!-- Inner -->
-
-  <!-- Controls -->
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-mdb-target="#carouselVideoExample"
-    data-mdb-slide="prev"
-  >
+  <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-mdb-target="#carouselVideoExample"
-    data-mdb-slide="next"
-  >
+  <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-<!-- Carousel wrapper -->

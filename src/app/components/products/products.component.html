@@ -1,4 +1,17 @@
 <app-carousel></app-carousel>
-<app-products-filter>
-  <app-product-card product></app-product-card>
-</app-products-filter>
+<app-products-filter> </app-products-filter>
+<div class="d-flex flex-wrap gap-2 justify-content-center my-5">
+  <div
+    class="col-md-6 col-lg-3 d-flex justify-content-center mb-4"
+    *ngFor="let product of productList"
+  >
+    <app-product-card
+      class="d-flex justify-content-center"
+      [title]="product.title"
+      [category]="product.category"
+      [rating]="product.rating"
+      [price]="product.price"
+      (addToCart)="onAddToCart($event)"
+    ></app-product-card>
+  </div>
+</div>

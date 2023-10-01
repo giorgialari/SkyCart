@@ -2,30 +2,31 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './authentication/auth.guard';
 import { LoginComponent } from './authentication/login/login.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { ProductsComponent } from './components/products/products.component';
+import { CartComponent } from './components/cart/cart.component';
+import { LayoutComponent } from './shared/layout/layout.component';
+import { SignupComponent } from './authentication/signup/signup.component';
 
 const routes: Routes = [
-  // { path: '', component: HomeComponent, canActivate: [AuthGuard] }, // Example of a protected route
-  { path: 'login', component: LoginComponent },
-  { path: 'products', component: ProductsComponent },
   {
-    path: 'welcome',
-    component: WelcomeComponent,
-    // canActivate: [AuthGuard],
+    path: '',
+    component: LayoutComponent,
+
     children: [
-      // { path: 'child1', component: Child1Component },
-      // { path: 'child2', component: Child2Component },
+      { path: '', redirectTo: '/products', pathMatch: 'full' },
+      { path: 'products', component: ProductsComponent },
+      { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
     ]
   },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   { path: 'error-page', component: ErrorPageComponent },
-
   { path: '**', redirectTo: '/error-page', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

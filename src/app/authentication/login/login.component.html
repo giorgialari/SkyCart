@@ -8,7 +8,7 @@
               <div class="card-body p-md-2 mx-md-1">
                 <div class="text-center">
                   <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                    src="assets/images/logo.png"
                     style="width: 185px"
                     alt="logo"
                   />
@@ -16,7 +16,7 @@
                 </div>
 
                 <form [formGroup]="loginForm" autocomplete="new-password">
-                  <p>Accedi al tuo account</p>
+                  <p>Log in to your account</p>
 
                   <div class="mb-4">
                     <label class="form-label" for="form2Example11"
@@ -50,15 +50,15 @@
                     >
                       Log in
                     </button>
-                    <a class="text-muted" href="#!">Password dimenticata?</a>
+                    <a class="text-muted" href="#!">Forgot password?</a>
                   </div>
 
                   <div
                     class="d-flex align-items-center justify-content-center pb-4"
                   >
-                    <p class="mb-0 me-2">Non hai un account?</p>
-                    <button type="button" class="btn btn-outline-danger">
-                      Registrati
+                    <p class="mb-0 me-2">Don't have an account?</p>
+                    <button type="button" class="btn btn-outline-primary" routerLink="/signup" >
+                      Sign Up
                     </button>
                   </div>
                 </form>

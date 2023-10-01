@@ -1,0 +1,8 @@
+### Inserisce un nuovo utente
+POST http://localhost:3000/api/createUser
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "test"
+}
