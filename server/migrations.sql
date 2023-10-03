@@ -2,6 +2,7 @@
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) UNIQUE NOT NULL,
+    name VARCHAR(50),
     password VARCHAR(255) NOT NULL
 );
 
@@ -23,3 +24,14 @@ INSERT INTO products (id, title, category, rating, price) VALUES
 (4, 'AeroSwift X3', 'Racing', 4.5, 350.00),
 (5, 'VisionMaster', 'Photography', 4.7, 800.00),
 (6, 'Explorer Z200', 'Outdoor', 4.3, 250.00);
+
+
+--Tabella del carrello
+CREATE TABLE cart (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    product_id INT,
+    quantity INT,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);

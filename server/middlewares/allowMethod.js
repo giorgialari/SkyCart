@@ -4,7 +4,6 @@ function allowMethods(allowedMethods) {
       const error = new Error();
       error.type = "method.not.allowed";
       return next(error);
-      // return res.status(405).json({ error: "Method Not Allowed" });
     }
     next();
   };

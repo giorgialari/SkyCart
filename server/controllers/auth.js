@@ -26,7 +26,7 @@ exports.login = async (req, res, next) => {
       { expiresIn: "1h" }
     );
 
-    res.status(200).json({ token });
+    res.status(200).json({ token, userId: user.id });
   } catch (e) {
     return next(e);
   }

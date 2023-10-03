@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product } from 'src/app/model/interfaces';
+import { ApiService } from 'src/app/services/api.service';
 import Swal from 'sweetalert2'
 
 
@@ -9,65 +11,49 @@ import Swal from 'sweetalert2'
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  @Input() productList: Product[] = [];
+  productListFiltered: Product[] = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private apiService: ApiService) { }
 
   ngOnInit(): void {
-
+    this.getAllProducts();
+    this.getAllCart();
   }
 
+  getAllProducts() {
+    this.apiService.get('products').subscribe((res: any) => {
+      this.productList = res;
+    });
+  }
+  onFilterProducts(e: any) {
+    this.productListFiltered = e;
+    this.productList = this.productListFiltered;
+  }
 
-  productList: Product[] = [
-    {
-      id: 1,
-      title: 'Drone X1',
-      category: 'Entry-Level',
-      rating: '4.2',
-      price: '200'
-    },
-    {
-      id: 2,
-      title: 'SkyMaster Pro',
-      category: 'Professional',
-      rating: '4.8',
-      price: '1500'
-    },
-    {
-      id: 3,
-      title: 'FlyEase Mini',
-      category: 'Portable',
-      rating: '3.9',
-      price: '120'
-    },
-    {
-      id: 4,
-      title: 'AeroSwift X3',
-      category: 'Racing',
-      rating: '4.5',
-      price: '350'
-    },
-    {
-      id: 5,
-      title: 'VisionMaster',
-      category: 'Photography',
-      rating: '4.7',
-      price: '800'
-    },
-    {
-      id: 6,
-      title: 'Explorer Z200',
-      category: 'Outdoor',
-      rating: '4.3',
-      price: '250'
-    }
-  ];
+  getAllCart() {
+    const userId = localStorage.getItem('user_id');
+    this.apiService.get(`cart/${userId}`).subscribe((res: any) => {
+      this.apiService.updateItemCount(res.length);
+    })
+  };
   onAddToCart(e: any) {
     if (localStorage.getItem('token')) {
-      Swal.fire({
-        icon: 'success',
-        title: 'Good news!',
-        text: 'Product added to cart!'
-      });
+      const product = {
+        "user_id": localStorage.getItem('user_id'),
+        "product_id": e.id,
+        "quantity": 1
+      }
+      this.apiService.post('insertCart', product).subscribe((res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Good news!',
+          text: 'Product added to cart!'
+        });
+        this.getAllCart();
+      }
+      );
+
     } else {
       Swal.fire({
         icon: 'error',
@@ -83,11 +69,4 @@ export class ProductsComponent implements OnInit {
 
     }
   }
-}
-interface Product {
-  id: number;
-  title: string;
-  category: string;
-  rating: string;
-  price: string;
 }

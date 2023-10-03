@@ -1,13 +1,17 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const authRoutes = require("./routes/auth");
+const productRouter = require("./routes/product");
+
 app.use(cors());
 app.use(express.json());
-const authRoutes = require("./routes/auth");
+
 
 const PORT = process.env.PORT || 3000;
 
 app.use("/api", authRoutes);
+app.use("/api", productRouter);
 
 // Middleware per la gestione degli errori
 app.use((err, req, res, next) => {

@@ -7,10 +7,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ApiService {
-  private BSubject = new BehaviorSubject<any[]>([]);
-  currentBSubject = this.BSubject.asObservable();
-  next(data: any) {
-    this.BSubject.next(data);
+  private itemCount = new BehaviorSubject<number>(0);
+  currentItemCount = this.itemCount.asObservable();
+  updateItemCount(count: number) {
+    this.itemCount.next(count);
   }
 
   constructor(private http: HttpClient) {}
