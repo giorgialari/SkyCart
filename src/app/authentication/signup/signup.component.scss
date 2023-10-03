@@ -1,0 +1,30 @@
+@import '../../../variables.scss';
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: var(--color-primary-dark-1);
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    var(--color-primary-dark-1),
+    var(--color-primary-dark-2),
+    var(--color-primary-dark-3)
+  );
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right,  var(--color-primary-dark-1), var(--color-primary-dark-2), var(--color-primary-dark-3));
+}
+
+
+@media (min-width: 768px) {
+  .gradient-form {
+    min-height: 10vh !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+  }
+}

@@ -8,13 +8,14 @@ declare var particlesJS: any;
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'agenda-appuntamenti';
+  title = 'SkyCart';
   myStyle: object = {};
   myParams: object = {};
   width: number = 100;
   height: number = 100;
   constructor(private authService: AuthService) {
-    particlesJS.load('particles-js', '../assets/particles/particles.json', null);
-
+    if (particlesJS) {
+      particlesJS.load('particles-js', '../assets/particles/particles.json', null);
+    }
   }
 }

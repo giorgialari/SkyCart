@@ -1,5 +1,7 @@
+@import '../../../variables.scss';
+
 .trash{
-  color: #cecece
+  color: var(--color-icon);
 }
 .img-fluid{
   width: 65px
@@ -10,4 +12,12 @@
 
 .price{
   width: 100px
+}
+.bg-dark{
+  background-color: var(--color-primary);
+}
+
+.btn{
+  background-color: var(--color-button);
+  border-color: var(--color-button);
 }

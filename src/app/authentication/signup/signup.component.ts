@@ -62,6 +62,7 @@ export class SignupComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
+          confirmButtonColor: '#1c5c69',
           text: err.error.error,
         })
       }

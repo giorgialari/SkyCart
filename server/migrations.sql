@@ -2,7 +2,7 @@
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) UNIQUE NOT NULL,
-    name VARCHAR(50),
+    name VARCHAR(255),
     password VARCHAR(255) NOT NULL
 );
 

@@ -48,7 +48,8 @@ export class ProductsComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title: 'Good news!',
-          text: 'Product added to cart!'
+          text: 'Product added to cart!',
+          confirmButtonColor: '#1c5c69',
         });
         this.getAllCart();
       }
@@ -60,6 +61,7 @@ export class ProductsComponent implements OnInit {
         title: 'Oops...',
         showCancelButton: true,
         confirmButtonText: 'Go to login',
+        confirmButtonColor: '#1c5c69',
         text: 'Please login to add to cart!'
       }).then((result) => {
         if (result.isConfirmed) {

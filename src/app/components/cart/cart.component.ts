@@ -43,6 +43,7 @@ export class CartComponent implements OnInit {
     Swal.fire({
       icon: 'success',
       title: 'Good news!',
+      confirmButtonColor: '#1c5c69',
       html: 'Payment successfully completed! <br> <b>Attention:</b> This is only an example, it has no real effect.'
     });
   }

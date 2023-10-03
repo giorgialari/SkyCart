@@ -1,5 +1,6 @@
+@import '../variables.scss';
 #particles-js {
-  background-color: black;
+  background-color: var(--color-background);
   position: fixed;
   top: 0;
   left: 0;
