@@ -6,6 +6,9 @@
 ## Introduction
 Welcome to SkyCart! This is my final project for the Full Stack Development master's program in S2I. SkyCart is a specialized e-commerce platform focused on selling drones.
 
+## Prerequisities
+- Angular CLI: 12.1.4
+- Node: 16.13.0
 ## Technologies
 - Frontend: Angular
 - Backend: NodeJS
