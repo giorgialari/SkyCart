@@ -13,6 +13,7 @@ import Swal from 'sweetalert2'
 export class ProductsComponent implements OnInit {
   @Input() productList: Product[] = [];
   productListFiltered: Product[] = [];
+  isLoading = false;
 
   constructor(private router: Router, private apiService: ApiService) { }
 
@@ -22,13 +23,19 @@ export class ProductsComponent implements OnInit {
   }
 
   getAllProducts() {
+    this.isLoading = true;
     this.apiService.get('products').subscribe((res: any) => {
       this.productList = res;
+      this.isLoading = false;
     });
   }
   onFilterProducts(e: any) {
+    this.isLoading = true;
     this.productListFiltered = e;
-    this.productList = this.productListFiltered;
+    setTimeout(() => {
+      this.isLoading = false;
+      this.productList = this.productListFiltered;
+    }, 1000);
   }
 
   getAllCart() {
