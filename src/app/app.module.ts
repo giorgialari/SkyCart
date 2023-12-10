@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
@@ -20,6 +20,10 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { CartComponent } from './components/cart/cart.component';
 import { LayoutComponent } from './shared/layout/layout.component';
 import { SignupComponent } from './authentication/signup/signup.component';
+import { ProductDetailComponent } from './components/products/product-detail/product-detail.component';
+import { AboutComponent } from './components/about/about.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,10 @@ import { SignupComponent } from './authentication/signup/signup.component';
     CartComponent,
     LayoutComponent,
     SignupComponent,
+    ProductDetailComponent,
+    AboutComponent,
+    FaqComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +55,7 @@ import { SignupComponent } from './authentication/signup/signup.component';
   providers: [AuthService, ApiService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

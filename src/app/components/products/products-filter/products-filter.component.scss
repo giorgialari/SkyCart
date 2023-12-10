@@ -1,13 +1,17 @@
-@import '../../../../variables.scss';
+@import "../../../../variables.scss";
 
 option {
   background: var(--color-primary);
   color: white;
 }
-input, select{
-  background-color: transparent !important
+input,
+select {
+  background-color: transparent !important;
 }
-.btn{
+.btn {
   background-color: var(--color-button);
   border-color: var(--color-button);
+}
+.btn:hover {
+  filter: brightness(90%);
 }

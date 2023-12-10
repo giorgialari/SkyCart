@@ -7,6 +7,10 @@ import { ProductsComponent } from './components/products/products.component';
 import { CartComponent } from './components/cart/cart.component';
 import { LayoutComponent } from './shared/layout/layout.component';
 import { SignupComponent } from './authentication/signup/signup.component';
+import { ProductDetailComponent } from './components/products/product-detail/product-detail.component';
+import { AboutComponent } from './components/about/about.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 const routes: Routes = [
   {
@@ -16,7 +20,11 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/products', pathMatch: 'full' },
       { path: 'products', component: ProductsComponent },
+      { path: 'about', component: AboutComponent },
+      { path: 'faq', component: FaqComponent },
+      { path: 'contact', component: ContactComponent },
       { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+      { path: 'details/:id', component: ProductDetailComponent },
     ]
   },
   { path: 'login', component: LoginComponent },

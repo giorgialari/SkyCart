@@ -1,0 +1,9 @@
+@import "../../../../variables.scss";
+
+.btn {
+  background-color: var(--color-button);
+  border-color: var(--color-button);
+}
+.btn:hover {
+  filter: brightness(90%);
+}

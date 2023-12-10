@@ -8,12 +8,21 @@ exports.getAllProducts = async () => {
   return result;
 };
 
+exports.getProductById = async (id) => {
+  const connection = await pool.getConnection();
+  const [result] = await connection.query(
+    "SELECT * FROM products WHERE id = ?",
+    [id]
+  );
+  connection.release();
+  return result;
+};
+
 //Filtro i prodotti in base a titolo o categoria o rating o prezzo
 exports.filterProducts = async (title, category, rating, price) => {
   let query = "SELECT * FROM products WHERE ";
   let values = [];
   let conditions = [];
-
 
   if (title) {
     conditions.push("title LIKE ?");
@@ -48,8 +57,6 @@ exports.filterProducts = async (title, category, rating, price) => {
 
   return result;
 };
-
-
 
 //---SEZIONE CARRELLO---//
 //INSERT INTO CART
@@ -88,7 +95,9 @@ exports.updateCart = async (user_id, product_id, quantity) => {
 //DELETE CART by id
 exports.deleteCart = async (id) => {
   const connection = await pool.getConnection();
-  const [result] = await connection.query("DELETE FROM cart WHERE id = ?", [id]);
+  const [result] = await connection.query("DELETE FROM cart WHERE id = ?", [
+    id,
+  ]);
   connection.release();
   return result;
 };

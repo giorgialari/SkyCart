@@ -1,6 +1,13 @@
-@import '../../../../variables.scss';
+@import "../../../../variables.scss";
 
-.btn{
+.btn {
   background-color: var(--color-button);
   border-color: var(--color-button);
+}
+
+.ripple {
+  height: 200px;
+}
+.cursor-pointer {
+  cursor: pointer;
 }

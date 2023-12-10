@@ -1,25 +1,28 @@
-@import '../../../variables.scss';
+@import "../../../variables.scss";
 
-.trash{
+.trash {
   color: var(--color-icon);
 }
-.img-fluid{
-  width: 65px
+.img-fluid {
+  width: 100px;
 }
-.quantity{
-  width: 50px
+.quantity {
+  width: 50px;
 }
 
-.price{
-  width: 100px
+.price {
+  width: 100px;
 }
-.bg-dark{
+.bg-dark {
   background-color: var(--color-primary);
 }
 
-.btn{
+.btn {
   background-color: var(--color-button);
   border-color: var(--color-button);
+}
+.btn:hover {
+  filter: brightness(90%);
 }
 
 /* Per tutti i browser */

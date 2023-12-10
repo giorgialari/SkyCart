@@ -1,0 +1,39 @@
+<section class="faq-section my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="faq-title text-center pb-3">
+          <h2>FAQ</h2>
+        </div>
+      </div>
+      <div class="col-md-6 offset-md-3">
+        <div class="faq" id="accordion">
+          <div class="card" *ngFor="let faq of faqs; let i = index">
+            <div class="card-header" [attr.id]="'faqHeading-' + i">
+              <div class="mb-0">
+                <h5
+                  class="faq-title"
+                  (click)="toggleCollapse(i)"
+                  [attr.aria-expanded]="expandedIndex === i"
+                  [attr.aria-controls]="'faqCollapse-' + i"
+                >
+                  <span class="badge">{{ i + 1 }}</span> {{ faq.question }}
+                </h5>
+              </div>
+            </div>
+            <div
+              [id]="'faqCollapse-' + i"
+              class="collapse"
+              [ngClass]="{ show: expandedIndex === i }"
+              [attr.aria-labelledby]="'faqHeading-' + i"
+            >
+              <div class="card-body">
+                <p class="text-white">{{ faq.answer }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
