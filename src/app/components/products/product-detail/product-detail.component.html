@@ -4,11 +4,23 @@
     <div class="row">
       <aside class="col-lg-6">
         <article class="d-flex justify-content-center">
-          <div class="bg-dark img-thumbnail my-4">
-            <spline-viewer
-              loading-anim-type="spinner-small-dark"
-              url="https://prod.spline.design/Osi2XDlFPFHyViXq/scene.splinecode"
-            ></spline-viewer>
+          <div class="d-flex flex-column my-4">
+            <div class="bg-dark img-thumbnail">
+              <spline-viewer
+                loading-anim-type="spinner-small-dark"
+                url="https://prod.spline.design/Osi2XDlFPFHyViXq/scene.splinecode"
+              ></spline-viewer>
+            </div>
+            <div class="text-secondary caption-text">
+              By dennis.robinson.dev.
+              <br />
+              Original work available on
+              <a
+                href="https://sketchfab.com/3d-models/drone-skeletal-mesh-6249a0faf569407096d0928a86910f52"
+                target="_blank"
+                >Sketchfab</a
+              >.
+            </div>
           </div>
         </article>
         <!-- gallery-wrap .end// -->
@@ -18,7 +30,6 @@
           <h4 class="title">
             {{ product.title }}
           </h4>
-
           <div class="rating-wrap my-3">
             <b class="label-rating text-warning me-2"> {{ product.rating }}</b>
 

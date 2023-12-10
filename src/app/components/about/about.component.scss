@@ -16,3 +16,17 @@
 .video_about {
   border-radius: 5%;
 }
+.video_about {
+  width: 100%;
+  height: auto;
+  max-width: 560px; /* Larghezza massima per desktop */
+  max-height: 315px; /* Altezza massima per mantenere il rapporto 16:9 */
+}
+
+/* Media query per schermi più piccoli (es. dispositivi mobili) */
+@media (max-width: 600px) {
+  .video_about {
+    max-width: 100%; /* Larghezza massima su dispositivi mobili */
+    max-height: auto; /* Altezza auto per mantenere le proporzioni */
+  }
+}

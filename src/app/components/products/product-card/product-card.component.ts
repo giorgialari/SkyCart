@@ -16,12 +16,9 @@ export class ProductCardComponent implements OnInit {
   @Output() addToCart: EventEmitter<any> = new EventEmitter<any>();
   constructor() {
     tippy('#copyright-image', {
-      content: `<div'
+      content: `<div>
       <p>
-        "Drone Skeletal Mesh" by dennis.robinson.dev is licensed under
-        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank"
-          >CC BY 4.0</a
-        >. Original work available on
+        "Drone Skeletal Mesh" by dennis.robinson.dev. Original work available on
         <a
           href="https://sketchfab.com/3d-models/drone-skeletal-mesh-6249a0faf569407096d0928a86910f52"
           target="_blank"
@@ -32,7 +29,7 @@ export class ProductCardComponent implements OnInit {
       allowHTML: true,
       trigger: 'click',
       interactive: true,
-      placement: 'left',
+      placement: 'bottom',
       arrow: true
     });
   }
