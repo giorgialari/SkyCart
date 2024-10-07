@@ -1,5 +1,6 @@
 export interface Card {
   id: number,
+  product_id: number,
   username: string,
   name: string,
   title: string,
@@ -15,4 +16,5 @@ export interface Product {
   category: string;
   rating: string;
   price: string;
+  imageUrl: string;
 }

@@ -18,6 +18,10 @@
                 <form [formGroup]="loginForm" autocomplete="new-password">
                   <p>Log in to your account</p>
 
+                  <small class="text-info">
+                    These are dummy credentials. You can log in with any
+                    username or password.
+                  </small>
                   <div class="mb-4">
                     <label class="form-label" for="form2Example11"
                       >Username</label
@@ -57,7 +61,11 @@
                     class="d-flex align-items-center justify-content-center pb-4"
                   >
                     <p class="mb-0 me-2">Don't have an account?</p>
-                    <button type="button" class="btn btn-outline-primary" routerLink="/signup" >
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary"
+                      routerLink="/signup"
+                    >
                       Sign Up
                     </button>
                   </div>

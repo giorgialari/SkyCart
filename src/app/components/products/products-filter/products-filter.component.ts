@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/model/interfaces';
 import { ApiService } from 'src/app/services/api.service';
+import { PRODUCTS } from 'src/app/shared/data/data';
 
 @Component({
   selector: 'app-products-filter',
@@ -19,10 +20,18 @@ export class ProductsFilterComponent implements OnInit {
 
   ngOnInit() { }
   filterProducts() {
-    this.apiService.get('products/filter?' + 'title=' + this.title + '&category=' + this.category + '&price=' + this.price + '&rating=' + this.rating).subscribe((res: any) => {
-      this.productList = res;
-      this.productListEvent.emit(this.productList);
-    })
+    const allProducts = PRODUCTS;
+    let filteredProducts = allProducts.filter((product) => {
+      return (
+        (!this.title || product.title.toLowerCase().includes(this.title.toLowerCase())) &&
+        (!this.category || product.category.toLowerCase().includes(this.category.toLowerCase())) &&
+        (!this.price || +product.price <= +this.price) &&
+        (!this.rating || +product.rating >= +this.rating)
+      );
+    });
+
+    this.productListEvent.emit(filteredProducts);
   }
+
 }
 

@@ -13,6 +13,7 @@ export class ProductCardComponent implements OnInit {
   @Input() category: string = '';
   @Input() rating: string = '';
   @Input() price: string = '';
+  @Input() imageUrl: string = '';
   @Output() addToCart: EventEmitter<any> = new EventEmitter<any>();
   constructor() {
     tippy('#copyright-image', {

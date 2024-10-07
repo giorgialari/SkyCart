@@ -12,14 +12,18 @@ export class AuthService {
   constructor(private http: HttpClient, private apiService: ApiService) { }
 
   login(username: string, password: string) {
-    return this.apiService.post<any>('login', { username, password })
-      .pipe(
-        tap((response) => {
-          this.token = response.token;
-          localStorage.setItem('token', this.token);
-        })
-      );
+    return of({
+      token: 'fake-token',
+      userId: 'fake-user-id'
+    }).pipe(
+      tap((response) => {
+        this.token = response.token;
+        localStorage.setItem('token', this.token);
+        localStorage.setItem('user_id', response.userId);
+      })
+    );
   }
+
 
   logout() {
     this.token = '';

@@ -6,20 +6,11 @@
         <article class="d-flex justify-content-center">
           <div class="d-flex flex-column my-4">
             <div class="bg-dark img-thumbnail">
-              <spline-viewer
-                loading-anim-type="spinner-small-dark"
-                url="https://prod.spline.design/Osi2XDlFPFHyViXq/scene.splinecode"
-              ></spline-viewer>
-            </div>
-            <div class="text-secondary caption-text">
-              By dennis.robinson.dev.
-              <br />
-              Original work available on
-              <a
-                href="https://sketchfab.com/3d-models/drone-skeletal-mesh-6249a0faf569407096d0928a86910f52"
-                target="_blank"
-                >Sketchfab</a
-              >.
+              <img
+                [src]="product.imageUrl"
+                class="img-fluid"
+                alt="Example product image"
+              />
             </div>
           </div>
         </article>
@@ -38,7 +29,7 @@
           <!-- rating-wrap.// -->
 
           <div class="mb-3">
-            <var class="price h5">$75.00</var>
+            <var class="price h5">${{ product.price }}</var>
             <span class="text-muted">/per box</span>
           </div>
 

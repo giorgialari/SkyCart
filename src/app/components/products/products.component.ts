@@ -1,7 +1,8 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/model/interfaces';
 import { ApiService } from 'src/app/services/api.service';
+import { PRODUCTS } from 'src/app/shared/data/data';
 import Swal from 'sweetalert2'
 
 
@@ -24,10 +25,10 @@ export class ProductsComponent implements OnInit {
 
   getAllProducts() {
     this.isLoading = true;
-    this.apiService.get('products').subscribe((res: any) => {
-      this.productList = res;
+    // this.apiService.get('products').subscribe((res: any) => {
+      this.productList = PRODUCTS
       this.isLoading = false;
-    });
+    // });
   }
   onFilterProducts(e: any) {
     this.isLoading = true;
@@ -39,28 +40,41 @@ export class ProductsComponent implements OnInit {
   }
 
   getAllCart() {
-    const userId = localStorage.getItem('user_id');
-    this.apiService.get(`cart/${userId}`).subscribe((res: any) => {
-      this.apiService.updateItemCount(res.length);
-    })
-  };
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      this.apiService.updateItemCount(cart.length);
+  }
+
   onAddToCart(e: any) {
     if (localStorage.getItem('token')) {
       const product = {
-        "user_id": localStorage.getItem('user_id'),
-        "product_id": e.id,
-        "quantity": 1
+        user_id: localStorage.getItem('user_id'),
+        product_id: e.id,
+        quantity: 1,
+        title: e.title,
+        price: e.price,
+        image: e.image,
+        category: e.category,
+      };
+
+      let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+      const existingProductIndex = cart.findIndex((item: any) => item.product_id === e.id);
+      if (existingProductIndex > -1) {
+        cart[existingProductIndex].quantity += 1;
+      } else {
+        cart.push(product);
       }
-      this.apiService.post('insertCart', product).subscribe((res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Good news!',
-          text: 'Product added to cart!',
-          confirmButtonColor: '#1c5c69',
-        });
-        this.getAllCart();
-      }
-      );
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Good news!',
+        text: 'Product added to cart!',
+        confirmButtonColor: '#1c5c69',
+      });
+
+      this.getAllCart();
 
     } else {
       Swal.fire({
@@ -74,8 +88,9 @@ export class ProductsComponent implements OnInit {
         if (result.isConfirmed) {
           this.router.navigate(['/login']);
         }
-      })
-
+      });
     }
   }
+
+
 }
