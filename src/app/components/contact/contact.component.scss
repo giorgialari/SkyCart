@@ -1,6 +1,11 @@
 @import "../../../variables.scss";
 
 .contact-container {
+  width: 100%;
+  min-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+
   input,
   textarea,
   select {
@@ -21,4 +26,11 @@
 
 .btn:hover {
   filter: brightness(90%);
+}
+
+@media (max-width: 800px) {
+  .contact-container {
+    min-width: 100%;
+    padding: 10px;
+  }
 }
