@@ -43,16 +43,32 @@ export class ProductDetailComponent implements OnInit {
         user_id: localStorage.getItem('user_id'),
         product_id: this.product.id,
         quantity: 1,
+        title: this.product.title,
+        price: this.product.price,
+        image: this.product.imageUrl,
+        category: this.product.category,
       };
-      this.apiService.post('insertCart', product).subscribe((res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Good news!',
-          text: 'Product added to cart!',
-          confirmButtonColor: '#1c5c69',
-        });
-        this.getAllCart();
+
+      let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+      const existingProductIndex = cart.findIndex((item: any) => item.product_id === this.product.id);
+      if (existingProductIndex > -1) {
+        cart[existingProductIndex].quantity += 1;
+      } else {
+        cart.push(product);
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Good news!',
+        text: 'Product added to cart!',
+        confirmButtonColor: '#1c5c69',
       });
+
+      this.getAllCart();
+
     } else {
       Swal.fire({
         icon: 'error',
@@ -60,7 +76,7 @@ export class ProductDetailComponent implements OnInit {
         showCancelButton: true,
         confirmButtonText: 'Go to login',
         confirmButtonColor: '#1c5c69',
-        text: 'Please login to add to cart!',
+        text: 'Please login to add to cart!'
       }).then((result) => {
         if (result.isConfirmed) {
           this.router.navigate(['/login']);
@@ -68,6 +84,7 @@ export class ProductDetailComponent implements OnInit {
       });
     }
   }
+
 
   getAllCart() {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
