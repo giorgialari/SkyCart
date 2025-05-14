@@ -2,19 +2,108 @@
 
 .trash {
   color: var(--color-icon);
+  margin-left: 5px;
+  min-width: 20px;
 }
 .img-fluid {
-  width: 100px;
+  width: 120px;
+  min-width: 120px;
+  height: auto;
+  
+  @media (max-width: 767px) {
+    width: 100px;
+    min-width: 100px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 90px;
+    min-width: 90px;
+  }
+}
+
+.product-info {
+  width: 65%;
+  
+  @media (max-width: 767px) {
+    width: 60%;
+  }
+  
+  @media (max-width: 576px) {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+.price-controls {
+  width: 35%;
+  justify-content: flex-end;
+  
+  @media (max-width: 767px) {
+    width: 40%;
+  }
+  
+  @media (max-width: 576px) {
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 110px;
+    margin-top: 8px;
+  }
+  
+  @media (max-width: 480px) {
+    padding-left: 100px;
+  }
 }
 .quantity {
-  width: 50px;
+  min-width: 30px;
+  width: auto;
+  margin-right: 15px;
+  text-align: center;
+  
+  @media (max-width: 767px) {
+    margin-right: 10px;
+  }
+  
+  @media (max-width: 576px) {
+    margin-right: 8px;
+  }
+  
+  h5 {
+    font-weight: 600 !important;
+  }
 }
 
 .price {
-  width: 100px;
+  min-width: 80px;
+  width: auto;
+  text-align: right;
+  margin-right: 10px;
+  
+  @media (max-width: 767px) {
+    min-width: 70px;
+    margin-right: 5px;
+  }
+  
+  @media (max-width: 576px) {
+    min-width: 60px;
+  }
+  
+  h5 {
+    white-space: nowrap;
+  }
 }
 .bg-dark {
   background-color: var(--color-primary);
+}
+
+.cart-section {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.card-body {
+  @media (max-width: 576px) {
+    padding: 0.8rem;
+  }
 }
 
 .btn {
@@ -34,4 +123,5 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }

@@ -31,6 +31,9 @@ export class CartComponent implements OnInit {
     );
 
     this.total = this.subtotal + this.shipping;
+    
+    // Update the item count in the navbar
+    this.apiService.updateItemCount(this.cards.length);
   }
 
   deleteCart(id: number) {
